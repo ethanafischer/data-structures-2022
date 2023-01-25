@@ -1,0 +1,72 @@
+Graph G = (V,E) consists of a set of vertices, V, and a set of edges, E
+An edge e = (u,v) connects one or two vertices, called its endpoints, u and v
+|V| = n, |E| = m
+
+two vertices are called neighbors if there exists an edge between them
+loop is an edge e = (u,v) where u = v
+degree of a vertex v, denoted deg(v), is the number of edges incident to it, where loops are counted twice
+simple graph contains neither loops nor multiple edges between the same two vertices
+path from u to v is a sequence of vertices in which every consecutive pair is connected by an edge
+cycle is a path of nonzero length that begins and ends at the same vertex, without any duplicate edges
+
+directed graph G = (V,E) is a graph in which each edge e = (u,v) starts at u and ends at v
+i.e. only moves one way
+
+in-degree of a vertex v, denoted deg^-1(v), in a directed graph is the number of edges directed INTO v
+out-degree of a vertex v, denoted deg^-1(v), in a directed graph is the number of edges directed OUT OF v
+
+paths, cycles in directed graphs must only move in the right direction
+
+Directed Acyclic Graph (DAG)
+directed graph with no cycles (e.g. course prerequisites)
+
+Topological sort
+takes DAG and produces a sorted list of all vertices
+
+For every vertex, (hash table)
+what is the in-degree (stored in hash table)
+what are the adjacent vertices (stored in a list)
+
+1. Build an adjacency list for all of the vertices and include each vertex's in-degree
+2. Push all vertices with in-degree zero onto a stack
+3. While the stack isn't empty:
+   Pop and "output" a vertex
+   Reduce the in-degree of all adjacent vertices by one
+      If the resulting in-degree is zero, push to stack
+
+
+Use hash frown
+brian
+adjacencies = {}
+adjacencies['v1'] = ['v2']
+adjacencies
+{'v1': ['v2']}
+adjacencies['v1'].append('v3')
+adjacencies
+{'v1': ['v2', 'v3']}
+indegrees['v1'] = 0
+indegrees['v1'] += 1
+indegrees
+{'v1': 1}
+'v1' in adjacencies
+True
+
+Graph traversals:
+depth-first search (use stack)
+1. Choose a starting vertex
+2. Form a path as long as possible until you reach a "dead end"
+3. Back up until not at dead end and repeat 2
+4. If necessary, repeat the whole process starting somewhere else (where you haven't been)
+
+breadth-first search (use queue)
+1. Choose a starting vertex
+2. Visit all possible neighbors
+3. From each of the visited vertices, visit all un-visited neighbors
+4. If necessary, repeat the whole process starting somewhere else (where you haven't been)
+(Level-order traversal)
+
+A graph is bipartite if the vertices can be partitioned into two distinct sets
+such that no two adjacent vertices are in the same set.
+
+A graph is 2-colorable if every vertex can be colored one of two colors
+such that no two adjacent vertices are the same color.

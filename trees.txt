@@ -1,0 +1,43 @@
+Tree
+
+root, leaf/leaves
+parent/child
+ancestor dependent relationship
+
+Binary tree
+each parent can only have a left and right child
+
+Binary Search Tree (BST)
+For every node in the tree,
+the value of every node to the left must be smaller, and
+the value of every node to the right must be larger
+             12
+          7      20
+        2  10  14  23
+
+
+search: search the BST for a specific value     average O(log n)    worst O(n)
+insert: insert an element, maintaining order    average O(log n)    worst O(n)
+remove: remove an element, maintaining order    average O(log n)    worst O(n)
+
+replace removed value:  go one left then all to right (max for <n)
+                        go one right then all to left (min for >n)
+
+Tree traversal
+pre-order traversal:    "visit" the current spot then the left tree, then the right tree
+in-order traversal:     "visit" the left tree first, then the current spot, then the right tree
+post-order traversal:   "visit" the left tree, then the right tree, then the current spot
+level-order traversal:  "visit" all the items left to right, top to bottom
+
+in-order: 2, 7, 10, 12, 14, 20, 23
+loop over the contents in sorted order
+
+post-order: 2, 10, 7, 14, 23, 20, 12
+
+level-order:
+1. enqueue the root to a queue.
+2. while the queue isn't empty:
+    a. dequeue the next node
+    b. "visit" it
+    c. enqueue the node's children
+

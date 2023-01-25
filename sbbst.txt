@@ -1,0 +1,67 @@
+Self-Balancing Binary Search Tree
+
+Red Black Tree
+1. Each node is colored red or black
+2. Every path from root to leaf must encounter the same exact number of black nodes
+3. The child of a red node must be a black node
+
+Insert
+1. Insert like a normal bst, coloring the new node red
+2. Rebalance if needed
+3. Recolor the root black
+
+
+n = len(edge_list)
+    color_list = [-1] * n
+    vertex_color = []
+    for i in range(n):
+        if color_list[i] == -1:
+            vertex_color.append([i, "red"])
+            color_list[i] = 'red'
+
+        while len(vertex_color) != 0:
+            p = vertex_color[0]
+            vertex_color.pop(0)
+
+            cur_vertex = p[0]
+            cur_vertex_color = p[1]
+
+            for j in range(len(edge_list[cur_vertex])):
+                if color_list[j] == cur_vertex_color:
+                    return False
+                if color_list[j] == -1:
+                    if cur_vertex_color == "black":
+                        color_list[j] = "red"
+                    else:
+                        color_list[j] = "black"
+                    vertex_color.append([j, color_list[j]])
+    return True
+
+edge_list = [['101', '102'], ['102', '103'], ['103', '104'], ['104', '101']]
+print(is_two_colorable(edge_list))
+
+
+    n = len(edge_list)  # number of vertices
+    color_list = [-1] * n  # 0 represents no colour
+    for i in range(n):  # iterating through all the vertices
+        if color_list[i] == 0:
+            if check_color(i, 1, color_list, edge_list) == False:
+                return False
+    return True
+
+
+def check_color(i, c, color_list, edge_list):
+    color_list[i] = c
+    for j in edge_list[i]:
+        if color_list[j] == c:
+            return False
+        elif color_list[j] == 0 and check_color(j, compare_colors(c), color_list, edge_list) == False:
+            return False
+    return True
+
+
+def compare_colors(c):
+    if c == 0:
+        return 1
+    else:
+        return 0

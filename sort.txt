@@ -1,0 +1,65 @@
+Insertion sort
+25 13 -100 -12 60 31 -76 2
+13 25 -100 -12 60 31 -76 2
+-100 13 25 -12 60 31 -76 2
+-100 -12 13 25 60 31 -76 2
+-100 -12 13 25 31 60 -76 2
+-100 -76 -12 13 25 31 60 2
+-100 -76 -12 2 13 25 31 60
+Worst case: O(n^2)
+
+
+Selection sort
+25 13 -100 -12 60 31 -76 2
+-100 13 25 -12 60 31 -76 2
+-100 -76 25 -12 60 31 13 2
+-100 -76 -12 25 60 31 13 2
+-100 -76 -12 2 60 31 13 25
+-100 -76 -12 2 13 31 60 25
+-100 -76 -12 2 13 25 60 31
+-100 -76 -12 2 13 25 31 60
+Worst/best case: O(n^2)
+
+Merge sort
+1. Divide the list into the left half and the right half
+2. Merge sort the left half
+3. Merge sort the right half
+4. Merge the two sorted halves
+
+Suppose I have an algorithm that takes 0.5 seconds for a problem of size 3000.
+How long will it take for a problem of size 24000?
+a. O(n^3)
+Equation: T = C * n^3
+          T = C * 24000^3
+          0.5 = C * 3000^3
+          T = 24000^3/3000^3*0.5
+          T = 256 s
+b. O(log n)
+          T = C * log n
+          T = C * log (24000)
+          0.5 = C * log (3000)
+          T = log (24000)/log (3000) * 0.5
+          T = 0.63 s
+
+log a/ log b = log(b)(a)
+
+How large a problem can be processed in 1 minute?
+a. O(n^3)
+60 = C * n^3
+0.5 = C * 3000^3
+
+b. 60 = C * log(n)
+   0.5 = C * log(3000)
+   120 = log(n)/log(3000)
+   120 = log(3000)(n)
+   3000^120 = n
+
+c. 120 = 2^n/2^3000 = 2^(n-3000)
+   log(2)(120) = n-3000
+   3000 + log(2)(120) = n
+
+d. O(n*log(n))
+   60 = C * n*log(n)
+   0.5 = C * (3000*log(3000))
+   120 = (n*log(n))/(3000*log(3000))
+   120 * 3000 * log(3000) = n * log(n)

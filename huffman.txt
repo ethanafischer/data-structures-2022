@@ -1,0 +1,28 @@
+Huffman coding
+
+'a' -> 97 (ASCII) -> 61 (base 16) -> 01100001 (binary)
+
+
+abcd abc ab a
+ASCII  97  98  99  100  32
+char    a   b   c   d  ' '
+freq    4   3   2   1   3
+
+1. Create a leaf node for each symbol and add it to a sorted list
+   We're going to sort by frequency and break ties with ASCII value
+
+*sorted list: sort be frequency, then by ASCII
+
+[Node('d', 1), Node('c', 2), Node(' ', 3), Node('b', 3), Node('a', 4)]
+
+2. while there is more than one tree in the list:
+    a. Remove two nodes from the beginning of the list
+    b. Create a new node that has those trees as children and a frequency equal to the sum of the two node's frequencies
+    c. Insert the new tree back into the sorted list, importantly, in the correct spot
+
+[Node('d', 1), Node('c', 2), Node(' ', 3), Node('b', 3), Node('a', 4)]
+
+left = 0
+right = 1
+char    a   b   c   d  ' '
+code    11  01 101 100 00

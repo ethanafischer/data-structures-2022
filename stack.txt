@@ -1,0 +1,38 @@
+stack (LIFO)
+push: add a value to the top of the stack
+pop: remove the value at the top of the stack
+peek: look at the top of the stack
+is_empty:
+size:
+
+always act on index 0 for linked structure or end of array structure
+infix: 2 + 3
+postfix/Reverse Polish Notation (RPN): 2 3 4 * +
+Evaluating RPN
+1. Read from left to right
+2. When a value is encountered, push it onto stack
+3. When an operator is encountered:
+a. Push the required number of values from stack
+b. Perform the operation
+c. Push the result to the stack
+
+Converting infix -> RPN
+1. Read from left to right
+2. When you encounter a value, append it to the RPN expression
+3. When you encounter an open parentheses, push it onto the stack
+4. When you encounter a closing parentheses:
+   until the top of the stack is an open parentheses,
+   pop operators off of the stack and append them to the RPN expression.
+5. When you encounter an operator O1,
+   While there is an operator O2 at the top of the stack and either
+   O2 has greater precedence than O1, or
+   O2 has equal precedence to O1 and O1 is left-associative
+   EXCEPTION: ** is right-associative
+   Pop O2 from the stack into the RPN expression
+   Then push O1 onto the start
+6. When you get to the end of the infix expression,
+   pop (and append to RPN) all remaining operators
+
+
+infix = 5 * (6 + 3 - 7 * 3 + 2) / 6
+RPN = 5 6 3 + 7 3 * - 2 + * 6 /

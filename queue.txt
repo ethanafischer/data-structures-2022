@@ -1,0 +1,41 @@
+Queue (FIFO)
+
+queue.arr
+queue.size
+queue.cap
+queue.start
+
+circular queue
+queue values will wrap to start of list (index 0)
+
+front of queue is the top of array (index 0)
+end of queue is the bottom of array (index n)
+
+1. enqueue: add a value to the end of the queue (bottom of array), (size+start) % cap
+2. dequeue: remove a value from the front of a queue
+3. peek:    look at the front of the line
+4. is_empty
+5. size
+
+if size == cap:
+cap * 2, de-wrap (index 0-n), start = 0.
+
+
+linked queue
+enqueue: add a value to the tail of the queue
+dequeue: remove a value from the head of the queue
+queue.head (start of linked queue)
+queue.tail (end of linked queue)
+each grouping of data in a linked queue is called a Node, each part is queue.value, queue.next
+
+head = Node 1
+head.next = Node 2
+head.next.next = Node 3
+tail
+tail.next = None
+
+Priority queue
+enqueue (with priority): adds an element to the given queue with an associated priority
+dequeue (highest priority): removes the element from the queue with the highest priority
+peek (highest priority): gets the highest priority element but does not modify the queue
+

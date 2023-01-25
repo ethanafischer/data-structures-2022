@@ -1,0 +1,61 @@
+hash table
+
+lookup O(1)
+insert O(1)
+delete O(1)
+
+worst case: O(n)
+
+take the data
+apply hash function to find where to put it in the function
+
+def my_hy_hash(non0:
+    return 4
+
+given a string, add up the ASCII values
+hash("Brian)" = 66 + 114 + 105 + 97 + 110
+hash("John") = 74 + 111 + 104 + 110 + 399
+
+mod by table size to keep in range
+
+collision resolution
+there will almost always be collisions.
+
+separate chaining
+1.  at each entry at the table,
+    instead of one value, we'll chain together multiple times
+
+load factor
+lambda = # of items in table / table size
+
+Open addressing
+Probing
+index = (hash(x) + f(i) % table size
+where i is the number of times we had to "try again"
+
+linear probing
+f(i) = i
+need lambda <= 1, want lambda < 0.7
+often leads to clustering
+
+quadratic probing
+f(i) = i^2
+need a prime table size
+need lambda < 0.5
+
+89
+13
+18
+49
+58
+69
+22
+
+[49, 58, 69, 13, 22, , , , 18, 89]
+
+lookup:
+start at key index, go +1 index and wrapping
+stop probing if element is None
+
+remove:
+remove value but replace with dummy var

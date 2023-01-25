@@ -1,0 +1,74 @@
+Binary heap
+A minimum binary heap is a binary tree but not a BST with two additional properties:
+structure property: the binary tree is complete
+***complete: every level is filled in except maybe the last level,
+where it can be partially filled in left to right
+heap property: the value at each node is less than or equal to the values of the node's children
+
+height = log(2) n
+
+enqueue:
+add element to the bottom level of the heap in the next available leaf node
+while the element is less than its parent: (sift up)
+swap the element and the parent
+keep swapping until satisfies heap property
+
+represent a binary heap as an array:
+levels going down, left to right
+root is at index 1
+index 0 and last index is left blank
+
+ex: [ , 5, 20, 7, 28, 72, 7, 80, 41, 41, 98, 74, 43, 42, ]
+
+left child: 2x
+right child: 2x + 1
+parent: x // 2
+
+dequeue:
+remove the root vertex
+replace the hole with the last value on the bottom level
+while the element is larger than its children: (sift down)
+swap the element with its smaller child
+
+efficiency
+        enqueue         dequeue
+worst   O(log n)        O(log n)
+best    O(1)            O(1)
+avg     O(1)            O(log n)
+
+heap sort
+
+build a heap from the list O(n)
+dequeue everything back into the list O(n log n)
+
+heapify
+O(n)
+percolate down starting at the end, looping backwards through the tree
+
+
+"""
+    while idx * 2 < size(heap):
+        # if two children
+            # swap with bigger of two children if aplicable
+        # if one child,
+            # swap if applicable
+
+        #if left child exists and keep swapping
+        #greater = heap[left]
+        #greater.idx = left
+        #if right child exists and left is less than right
+        #greater = right
+        #if heap[idx] < greater child:
+        #swap them
+        #keep_swapping = False
+        if heap.items[idx] < heap.items[2 * idx] or (idx * 2 + 1 < size(heap) and heap.items[idx] < heap.items[2 * idx + 1]):
+            if heap.items[2 * idx] > heap.items[2 * idx + 1]:
+                heap.items[idx], heap.items[2 * idx] = heap.items[2 * idx], heap.items[idx]
+                idx = idx * 2
+            else:
+                heap.items[idx], heap.items[2 * idx + 1] = heap.items[2 * idx + 1], heap.items[idx]
+                idx = 2 * idx + 1
+    if idx * 2 < size(heap):
+        if heap.items[idx * 2] < heap.items[idx]:
+            heap.items[idx], heap.items[2 * idx] = heap.items[2 * idx], heap.items[idx]
+"""
